@@ -13,20 +13,21 @@ class RecipeMenu extends StatelessWidget {
           body: Stack(
         children: [
           ListView(
+              physics: const BouncingScrollPhysics(),
               children: List.generate(10, (index) {
-            if (index == 0) {
-              return Column(
-                children: [
-                  SizedBox(
-                    height: 60,
-                  ),
-                  LongBox(),
-                ],
-              );
-            }
+                if (index == 0) {
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 60,
+                      ),
+                      LongBox(),
+                    ],
+                  );
+                }
 
-            return MenuItemBox();
-          })),
+                return MenuItemBox();
+              })),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
