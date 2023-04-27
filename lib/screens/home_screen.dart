@@ -34,6 +34,13 @@ class HomeScreen extends StatelessWidget {
               ),
               Wrap(
                 children: List.generate(6, (index) => RecipeBox()),
+              ),
+              HeadingText(
+                title: "Dinner Recipes",
+                subtitle: "Here is a simple truth dinner spreads love",
+              ),
+              Wrap(
+                children: List.generate(6, (index) => RecipeBox()),
               )
             ],
           ),
