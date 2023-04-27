@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import '../utils/text_style_utils.dart';
 
 class MenuItemBox extends StatelessWidget {
-  const MenuItemBox({super.key});
+  final Map recipe;
+
+  const MenuItemBox({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,9 @@ class MenuItemBox extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => RecipeDetail()));
+              context, MaterialPageRoute(builder: (_) => RecipeDetail(
+                recipe: recipe,
+              )));
         },
         child: Material(
           borderRadius: BorderRadius.circular(10),
@@ -36,7 +40,7 @@ class MenuItemBox extends StatelessWidget {
                         child: Container(
                           height: height * 0.25,
                           child: Image(
-                            image: AssetImage("assets/images/food4.jpg"),
+                            image: AssetImage(recipe['image']),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -50,7 +54,7 @@ class MenuItemBox extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              "Easy Tea / Chai Recipe",
+                              recipe['recipeTitle'],
                               style: TextStyleUtils.headingStyle,
                             ),
                             Row(
@@ -59,14 +63,14 @@ class MenuItemBox extends StatelessWidget {
                                 Text("Cooking Time")
                               ],
                             ),
-                            Text(" 20 minutes"),
+                            Text(recipe['cookingTime']),
                             Row(
                               children: [
                                 Icon(Icons.timer),
                                 Text("Reading Time")
                               ],
                             ),
-                            Text(" 10 minutes")
+                            Text(recipe['readingTime'])
                           ],
                         ),
                       ))

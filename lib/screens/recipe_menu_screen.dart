@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import '../widgets/menu_item_box.dart';
 
 class RecipeMenu extends StatelessWidget {
-  const RecipeMenu({super.key});
+  final List recipe;
+
+  const RecipeMenu({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class RecipeMenu extends StatelessWidget {
         children: [
           ListView(
               physics: const BouncingScrollPhysics(),
-              children: List.generate(10, (index) {
+              children: List.generate(recipe.length + 1, (index) {
                 if (index == 0) {
                   return Column(
                     children: [
@@ -26,7 +28,10 @@ class RecipeMenu extends StatelessWidget {
                   );
                 }
 
-                return MenuItemBox();
+                return MenuItemBox(
+                  recipe: recipe[index-1],
+
+                );
               })),
           Padding(
             padding: const EdgeInsets.all(8.0),

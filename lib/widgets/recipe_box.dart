@@ -2,14 +2,20 @@ import 'package:cfc_dang_flutter_day3_recipe_app/screens/recipe_menu_screen.dart
 import 'package:flutter/material.dart';
 
 class RecipeBox extends StatelessWidget {
-  const RecipeBox({super.key});
+  final Map recipeMenuData;
+  final int index;
+
+  const RecipeBox({super.key, required this.recipeMenuData, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => RecipeMenu()));
+            context, MaterialPageRoute(builder: (_) => RecipeMenu(
+              recipe: recipeMenuData['recipes']
+
+            )));
       },
       child: Stack(
         children: [
@@ -56,7 +62,7 @@ class RecipeBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  "1. Omelet Recipes",
+                  "$index. ${recipeMenuData['menuTitle']}",
                   style: TextStyle(color: Colors.white),
                 ),
                 Row(
@@ -66,7 +72,7 @@ class RecipeBox extends StatelessWidget {
                       color: Colors.white,
                     ),
                     Text(
-                      "17 recipes",
+                      "${recipeMenuData['recipes'].length} recipes",
                       style: TextStyle(color: Colors.white),
                     )
                   ],

@@ -4,30 +4,11 @@ import 'package:cfc_dang_flutter_day3_recipe_app/widgets/recipe_section.dart';
 import 'package:flutter/material.dart';
 
 class RecipeDetail extends StatelessWidget {
-  const RecipeDetail({super.key});
+  final Map recipe;
+  const RecipeDetail({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
-    List<String> ingredients = [
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "8  cardamon seed",
-      "9  cardamon seed",
-    ];
-
-    List<String> directions = [
-      " Place the cardaMon, clovesm and pepperecorn in a reseable palstic bag and crush with heavy skillet.",
-      " Place the cardaMon, clovesm and pepperecorn in a reseable palstic bag and crush with heavy skillet.",
-      " Place the cardaMon, clovesm and pepperecorn in a reseable palstic bag and crush with heavy skillet.",
-      " Place the cardaMon, clovesm and pepperecorn in a reseable palstic bag and crush with heavy skillet.",
-      " Place the cardaMon, clovesm and pepperecorn in a reseable palstic bag and crush with heavy skillet.",
-      " Place the cardaMon, clovesm and pepperecorn in a reseable palstic bag and crush with heavy skillet.",
-    ];
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -38,7 +19,7 @@ class RecipeDetail extends StatelessWidget {
                   height: 60,
                 ),
                 Text(
-                  "Easy Chai/tea Recipe Guide",
+                  recipe['recipeTitle'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
@@ -57,7 +38,7 @@ class RecipeDetail extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  " 20 minutes",
+                  recipe['cookingTime'],
                   style: TextStyleUtils.subHeadingStyle,
                 ),
                 Row(
@@ -72,7 +53,8 @@ class RecipeDetail extends StatelessWidget {
                     )
                   ],
                 ),
-                Text(" 10 minutes", style: TextStyleUtils.subHeadingStyle),
+                Text(recipe['readingTime'],
+                    style: TextStyleUtils.subHeadingStyle),
                 LongBox(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -93,14 +75,14 @@ class RecipeDetail extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: RecipeSection(
                     title: "Ingredients",
-                    textList: ingredients,
+                    textList: recipe['ingredients'],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: RecipeSection(
                     title: "Directions",
-                    textList: directions,
+                    textList: recipe['directions'],
                   ),
                 ),
               ],
