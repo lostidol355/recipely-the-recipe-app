@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cfc_dang_flutter_day3_recipe_app">
    <application
-        android:label="cfc_dang_flutter_day3_recipe_app"
+        android:label="Recipely - The receipe app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
