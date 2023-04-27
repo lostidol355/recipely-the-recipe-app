@@ -7,18 +7,21 @@ class HeadingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-        ),
-        Text(
-         subtitle,
-          style: TextStyle(fontSize: 20),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          ),
+          Text(
+            subtitle,
+            style: TextStyle(fontSize: 20),
+          )
+        ],
+      ),
     );
   }
 }
